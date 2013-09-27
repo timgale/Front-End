@@ -1,1 +1,0 @@
-# Clicksco Front End Boilerplate
