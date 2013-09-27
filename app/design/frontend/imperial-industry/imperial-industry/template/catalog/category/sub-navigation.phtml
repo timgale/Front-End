@@ -1,0 +1,74 @@
+<?php
+$currentCategory = Mage::registry('current_category');
+if($currentCategory->getLevel() == 2) {
+	$category = $currentCategory;
+} elseif($currentCategory->getLevel() == 3) {
+	$parentCategory = $currentCategory->getParentCategory();
+	$category = $parentCategory;
+} elseif($currentCategory->getLevel() == 4) {
+	$parentCategory = $currentCategory->getParentCategory()->getParentCategory();
+	$category = $parentCategory;
+} elseif($currentCategory->getLevel() == 5) {
+	$parentCategory = $currentCategory->getParentCategory()->getParentCategory()->getParentCategory();
+	$category = $parentCategory;
+}
+
+if($category):
+	$subCategories = Mage::getModel('catalog/category')
+	->load($category->getId())
+	->getCollection()
+	->addAttributeToSort('position', 'ASC')
+	->addFieldToFilter('parent_id', $category->getId())
+	->addFieldToFilter('is_active', 1)
+	->addFieldToFilter('include_in_menu', 1)
+	->addAttributeToSelect('name');
+	?>
+	<?php if(count($subCategories) > 0): ?>
+	<div class="sidebar-navigation">
+		<h2><?php echo $this->__('Categories') ?></h2>
+		<ul class="level1">
+			<li><?php echo $category->getName() ?></li>
+			<?php foreach ($subCategories as $subCategory): ?>
+			
+			<?php
+			$subCategoriesLevel2 = Mage::getModel('catalog/category')
+				->load($subCategory->getId())
+				->getCollection()
+				->addAttributeToSort('position', 'ASC')
+				->addFieldToFilter('parent_id', $subCategory->getId())
+				->addFieldToFilter('is_active', 1)
+				->addFieldToFilter('include_in_menu', 1)
+				->addAttributeToSelect('name');
+		
+			$classes = '';
+			if($currentCategory->getId() == $subCategory->getId()) {
+				$classes .= 'active ';
+			}
+			if(count($subCategoriesLevel2) > 0) {
+				$classes .= 'has-children ';
+			}
+			
+			?>
+			
+			<li class="<?php echo $classes; ?>">
+				<a href="<?php echo $subCategory->getUrl() ?>">
+					<?php echo $subCategory->getName() ?>
+				</a>
+				<?php if(count($subCategoriesLevel2) > 0): ?>
+					<span><span></span></span>
+					<ul class="level2" <?php if($currentCategory->getId() == $subCategory->getId()): ?> style="display: block;" <?php endif; ?>>
+						<?php foreach($subCategoriesLevel2 as $subCategoryLevel2): ?>
+						<li<?php if($currentCategory->getId() == $subCategoryLevel2->getId()): ?> class="active" <?php endif; ?>>
+							<a href="<?php echo $subCategoryLevel2->getUrl() ?>">
+								<?php echo $subCategoryLevel2->getName() ?>
+							</a>
+						</li>
+						<?php endforeach ?>
+					</ul>    
+				<?php endif ?>
+			</li>
+			<?php endforeach ?>
+		</ul>
+	</div>
+	<?php endif ?>
+<?php endif ?>

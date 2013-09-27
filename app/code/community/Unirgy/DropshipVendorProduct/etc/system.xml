@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <udprod>
+            <tab>sales</tab>
+            <label>Vendor Products Edit</label>
+            <frontend_type>text</frontend_type>
+            <sort_order>331</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>210</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <use_product_zoom translate="label">
+                            <label>Use custom product zoom on frontend</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </use_product_zoom>
+                        <cfg_upload_images_simple translate="label">
+                            <label>Upload images into configrable simples</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </cfg_upload_images_simple>
+                        <!--cfg_show_media_attributes translate="label">
+                            <label>Show media attributes in configurable per option image upload</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </cfg_show_media_attributes-->
+                        <cfg_show_media_gallery translate="label">
+                            <label>Explicitly show media gallery in configurable product</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>udprod/source</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </cfg_show_media_gallery>
+                        <allow_custom_options translate="label">
+                            <label>Allow add/edit custom options</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </allow_custom_options>
+                        <product_info_tabbed translate="label">
+                            <label>Is product view info use tabbed layout</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </product_info_tabbed>
+                        <type_of_product translate="label">
+                            <label>Type of product</label>
+                            <frontend_type>select</frontend_type>
+                            <frontend_model>udprod/adminhtml_systemConfigField_typeOfProduct</frontend_model>
+                            <backend_model>udprod/systemConfig_backend_typeOfProduct</backend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Create type of products here and group attribute sets per type of product</comment>
+                        </type_of_product>
+                        <prefix_sku_vid translate="label">
+                            <label>Prefix vendor created products' SKUs with vendor id</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </prefix_sku_vid>
+                        <auto_sku translate="label">
+                            <label>Automatically generate SKUs of vendor created products</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </auto_sku>
+                        <unique_vendor_sku translate="label">
+                            <label>Check vendor SKU is unique within vendor products</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </unique_vendor_sku>
+                        <unpublish_actions translate="label">
+                            <label>Unpublish vendor product on following changes</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>udprod/source</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </unpublish_actions>
+                        <show_hidden_categories translate="label">
+                            <label>Show hidden categories to vendor if the field presented on product edit form</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_hidden_categories>
+                        <allowed_types translate="label">
+                            <label>Allowed types of product</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>udprod/source</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </allowed_types>
+                    </fields>
+                </general>
+                <template_sku translate="label">
+                    <label>Template Sku</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>310</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <type_of_product translate="label">
+                            <label>Type of product</label>
+                            <frontend_type>select</frontend_type>
+                            <frontend_model>udprod/adminhtml_systemConfigField_typeOfProductSelector</frontend_model>
+                            <backend_model>udprod/systemConfig_backend_empty</backend_model>
+                            <source_model>udprod/source</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Select Type of Product to load setting in "Product SKUs used as templates"</comment>
+                        </type_of_product>
+                        <value translate="label">
+                            <label>Product SKUs used as templates (per attribute set)</label>
+                            <frontend_type>select</frontend_type>
+                            <frontend_model>udprod/adminhtml_systemConfigField_templateSku</frontend_model>
+                            <backend_model>udprod/systemConfig_backend_templateSku</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </value>
+                    </fields>
+                </template_sku>
+                <form>
+                    <label>Vendor Product Edit Form</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>410</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <fieldsets translate="label">
+                            <label>Fieldsets</label>
+                            <frontend_type>select</frontend_type>
+                            <frontend_model>udprod/adminhtml_systemConfigField_fieldsetsConfig</frontend_model>
+                            <backend_model>udprod/systemConfig_backend_fieldsetsConfig</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </fieldsets>
+                    </fields>
+                </form>
+                <quick_create_layout>
+                    <label>Add Product Options Layout</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>510</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <cfg_attributes translate="label">
+                            <label>Configurable Attributes Layout</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>udprod/source</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </cfg_attributes>
+                        <cfg_attributes_title translate="label">
+                            <label>Configurable Attributes Column Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Applicable only if "Configurable Attributes" Layout is "One Column"</comment>
+                        </cfg_attributes_title>
+                        <columns translate="label">
+                            <label>Columns</label>
+                            <frontend_type>select</frontend_type>
+                            <frontend_model>udprod/adminhtml_systemConfigField_quickCreateConfig</frontend_model>
+                            <backend_model>udprod/systemConfig_backend_quickCreateConfig</backend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </columns>
+                    </fields>
+                </quick_create_layout>
+            </groups>
+        </udprod>
+    </sections>
+</config>

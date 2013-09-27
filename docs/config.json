@@ -1,0 +1,15 @@
+{
+	"title": "Clicksco - Front End Guidelines",
+	"tagline": "Clicksco Front End Guidelines Version 1.0",
+	"image": "img/app.png",
+	"theme": "blue",
+	"date_modified": true,
+	"clean_urls": false,
+	"repo": "clicksco/front-end-standards",
+	"links": {
+		"View Github Repo": "",
+		"View Front End Testing Strategy Documentation": "",
+		"View Front End Workflow Documentation": "",
+		"Download Boilerplate": ""
+	}
+}

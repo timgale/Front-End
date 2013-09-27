@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Unirgy_DropshipMrate>
+            <version>1.3.1</version>
+            <usimpleup remote="http://download.unirgy.com/meta.php"
+                changelog="http://unirgy.com/support/portal/announcements"/>
+        </Unirgy_DropshipMrate>
+    </modules>
+
+    <global>
+        <blocks>
+            <udmrate>
+                <class>Unirgy_DropshipMrate_Block</class>
+            </udmrate>
+            <matrixrate_adminhtml>
+                <rewrite>
+                    <shipping_carrier_matrixrate_grid>Unirgy_DropshipMrate_Block_Adminhtml_MatrixrateGrid</shipping_carrier_matrixrate_grid>
+                </rewrite>
+            </matrixrate_adminhtml>
+        </blocks>
+        <models>
+            <udmrate>
+                <class>Unirgy_DropshipMrate_Model</class>
+                <resourceModel>udmrate_mysql4</resourceModel>
+            </udmrate>
+            <udmrate_mysql4>
+                <class>Unirgy_DropshipMrate_Model_Mysql4</class>
+                <entities>
+                    <matrixrate>
+                        <table>udshipping_matrixrate</table>
+                    </matrixrate>
+                </entities>
+            </udmrate_mysql4>
+
+            <matrixrate_shipping>
+                <rewrite>
+                    <carrier_matrixrate>Unirgy_DropshipMrate_Model_Matrixrate</carrier_matrixrate>
+                </rewrite>
+            </matrixrate_shipping>
+            <matrixrate_mysql4>
+                <rewrite>
+                    <carrier_matrixrate>Unirgy_DropshipMrate_Model_Mysql4_Matrixrate</carrier_matrixrate>
+                </rewrite>
+            </matrixrate_mysql4>
+        </models>
+
+        <resources>
+            <udmrate_setup>
+                <setup>
+                    <module>Unirgy_DropshipMrate</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </udmrate_setup>
+        </resources>
+    </global>
+    <admin>
+        <routers>
+            <udmrateadmin>
+                <use>admin</use>
+                <args>
+                    <module>Unirgy_DropshipMrate_Adminhtml</module>
+                    <frontName>udmrateadmin</frontName>
+                </args>
+            </udmrateadmin>
+        </routers>
+    </admin>
+    <default>
+        <carriers>
+            <!--
+            <udmrate>
+            	<condition_name>package_value</condition_name>
+                <active>0</active>
+                <include_virtual_price>1</include_virtual_price>
+                <sallowspecific>0</sallowspecific>
+                <allow_free_shipping_promotions>1</allow_free_shipping_promotions>
+                <show_only_free>0</show_only_free>
+                <free_method_text>Free Shipping</free_method_text>
+                <cutoff_cost>50</cutoff_cost>
+                <model>udmrate/matrixrate2</model>
+                <name>MatrixRate Cloned</name>
+                <title>Select Shipping Method Cloned</title>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+            </udmrate>
+            -->
+        </carriers>
+    </default>
+</config>

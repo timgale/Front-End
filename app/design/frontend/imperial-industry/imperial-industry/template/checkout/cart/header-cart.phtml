@@ -1,0 +1,16 @@
+<?php
+/**
+ * Shoping cart sidebar
+ *
+ * @see Mage_Checkout_Block_Cart_Sidebar
+ */
+?>
+<a href="<?php echo $this->getUrl('checkout/cart') ?>" class="cart-link">
+	<?php echo $this->__('Cart') ?>
+</a>
+<?php if($this->getSummaryCount()): ?>
+(<?php echo $this->getSummaryCount() ?>)
+<?php else: ?>
+(0)
+<?php endif; ?>
+<?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?>

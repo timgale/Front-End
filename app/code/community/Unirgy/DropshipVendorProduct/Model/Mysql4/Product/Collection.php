@@ -1,0 +1,6 @@
+<?php
+
+class Unirgy_DropshipVendorProduct_Model_Mysql4_Product_Collection extends Mage_Catalog_Model_Resource_Eav_Mysql4_Product_Collection
+{
+
+}

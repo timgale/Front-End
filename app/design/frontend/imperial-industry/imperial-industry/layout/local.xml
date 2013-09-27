@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layout>
+
+    <default>
+        
+        <remove name="right.poll"/>
+        <remove name="right.permanent.callout"/>
+        <remove name="left.permanent.callout"/>
+        <remove name="paypal.partner.right.logo"/>
+        <remove name="left.newsletter"/>
+        <remove name="checkout.cart.methods.multishipping" />
+        <remove name="checkout.cart.shipping" />
+        <remove name="footer_links" />
+        <remove name="cms_footer_links" />
+        <remove name="category.title" />
+        <remove name="currency" />
+        <remove name="tags_popular" />
+        <remove name="product.clone_prices" />
+        <remove name="product.info.addto" />
+        <remove name="cart_sidebar" />
+        <remove name="catalog.compare.sidebar" />
+        <remove name="sale.reorder.sidebar" />
+        <remove name="wishlist_sidebar" />
+        <remove name="right.reports.product.viewed" />
+        <remove name="left.reports.product.viewed" />
+        <remove name="right_currency" />
+        <remove name="catalog.leftnav" />
+        
+        <reference name="head">
+            
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery.min.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery.caroufredsel.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery.cycle.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery.fancybox.pack.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery.backstretch.min.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery.run.js</name>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/jquery.fancybox.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/main.css</stylesheet>
+            </action>
+        </reference>
+
+        <reference name="header">
+            <block type="page/template_links" name="header-links" as="header-links">
+                <action method="addLink">
+                    <label>About Us</label>
+                    <url>about</url>
+                    <urlParams helper="core/url/getHomeUrl"/>
+                    <title>About Us</title>
+                    <prepare/>
+                    <urlParams/>
+                    <position>1</position>
+                </action>
+                <action method="addLink" module="customer">
+                    <label>Account</label>
+                    <url helper="customer/getAccountUrl" />
+                    <title>Account</title>
+                    <prepare/>
+                    <urlParams/>
+                    <position>2</position>
+                </action>
+                <action method="addLink">
+                    <label>Wishlist</label>
+                    <url>wishlist</url>
+                    <urlParams helper="core/url/getHomeUrl"/>
+                    <title>Wishlist</title>
+                    <prepare/>
+                    <urlParams/>
+                    <position>3</position>
+                </action>
+                <action method="addLink">
+                    <label>Log In</label>
+                    <url>customer/account/login/</url>
+                    <urlParams helper="core/url/getHomeUrl"/>
+                    <title>Log In</title>
+                    <prepare/>
+                    <urlParams/>
+                    <position>4</position>
+                </action>
+            </block>
+            <block type="checkout/cart_sidebar" name="header-cart" template="checkout/cart/header-cart.phtml"/>
+            <block type="directory/currency" name="currency-selector" template="directory/currency-header.phtml" />
+            <block type="cms/block" name="about-header" as="about-header">
+                <action method="setBlockId"><block_id>about-header</block_id></action>
+            </block>
+        </reference>     
+        
+        <reference name="root">
+            <reference name="after_body_start">
+                <block type="core/template" name="GoogleTagManager" template="page/html/google-tag-manager.phtml" />
+            </reference>
+            <block type="core/text_list" name="top-navigation" as="top-navigation" translate="label">
+                <label>Navigation Bar</label>
+                <block type="page/html_topmenu" name="catalog.topnav" template="page/html/topmenu.phtml"/>
+            </block>
+        </reference>
+        
+        <reference name="footer">
+            <block type="cms/block" name="footer-links-left" as="footer-links-left">
+                <action method="setBlockId"><block_id>footer-links-left</block_id></action>
+            </block>
+            <block type="cms/block" name="footer-links-right" as="footer-links-right">
+                <action method="setBlockId"><block_id>footer-links-right</block_id></action>
+            </block>
+            <block type="cms/block" name="about-block" as="about-block">
+                <action method="setBlockId"><block_id>about-block</block_id></action>
+            </block>
+            <block type="cms/block" name="social-links" as="social-links">
+                <action method="setBlockId"><block_id>social-links</block_id></action>
+            </block>
+            <block type="newsletter/subscribe" name="newsletter" template="newsletter/subscribe.phtml"/>
+        </reference>
+    </default>
+    
+    <customer_logged_in>
+       <reference name="header-links">
+            <action method="removeLinkByUrl"><url helper="customer/getLoginUrl"/></action>
+            <!--<action method="removeLinkByUrl"><url helper="customer/account/login"></action>-->
+            <action method="addLink">
+                <label>Log Out</label>
+                <url>customer/account/logout/</url>
+                <urlParams helper="core/url/getHomeUrl"/>
+                <title>Log Out</title>
+                <prepare/>
+                <urlParams/>
+                <position>3</position>
+            </action>
+        </reference>
+    </customer_logged_in>
+
+    <catalog_category_view>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>
+        <reference name="left">
+            <block type="core/template" name="sub-navigation" before="-" template="catalog/category/sub-navigation.phtml" />
+        </reference>
+        <reference name="content">
+            <block type="cms/block" name="category-banners" as="category-banners" after="category.products">
+                <action method="setBlockId"><block_id>category-banners</block_id></action>
+            </block>
+        </reference>
+    </catalog_category_view>
+    
+    <tag_product_list>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="cms/block" name="category-banners" as="category-banners" after="category.products">
+                <action method="setBlockId"><block_id>category-banners</block_id></action>
+            </block>
+        </reference>
+    </tag_product_list>
+    
+    <catalogsearch_result_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="cms/block" name="category-banners" as="category-banners" after="category.products">
+                <action method="setBlockId"><block_id>category-banners</block_id></action>
+            </block>
+        </reference>
+    </catalogsearch_result_index>
+    <catalogsearch_advanced_result>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="cms/block" name="category-banners" as="category-banners" after="category.products">
+                <action method="setBlockId"><block_id>category-banners</block_id></action>
+            </block>
+        </reference>
+    </catalogsearch_advanced_result>
+        
+    <catalog_product_view>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="product.info">
+            <block type="cms/block" name="product-promo" as="product-promo">
+                <action method="setBlockId"><block_id>product-promo-text</block_id></action>
+            </block>
+            <block type="cms/block" name="size-guide" as="size-guide">
+                <action method="setBlockId"><block_id>size-guide</block_id></action>
+            </block>
+            <block type="tag/product_list" name="product_tag_list" before="-" template="tag/list.phtml">
+                <block type="page/html_wrapper" name="product.tag.list.list.before" as="list_before" translate="label">
+                    <label>Tags List Before</label>
+                    <action method="setMayBeInvisible"><value>1</value></action>
+                </block>
+            </block>
+            <block type="review/form" name="product.review.form" as="review-form"/>
+            <block type="catalog/product_list_upsell" name="upsell-products" as="upsell-products" template="catalog/product/list/upsell.phtml">
+                <action method="setColumnCount"><columns>5</columns></action>
+                <action method="setItemLimit"><type>upsell</type><limit>5</limit></action>
+            </block>
+            <block type="catalog/product_list_related" name="related-products" template="catalog/product/list/related.phtml"/>
+        </reference>
+    </catalog_product_view>
+    
+    <checkout_onepage_success>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+    </checkout_onepage_success>
+    
+    <customer_account>
+        <reference name="left">
+            <action method="unsetChild">
+                <name>catalog.compare.sidebar</name>
+            </action>
+        </reference>
+        <reference name="customer_account_navigation" >
+            <action method="unsetChild">
+                <name>customer_account_navigation</name>
+            </action>
+            <block type="customer/account_navigation" name="customer_account_navigation" before="-" template="customer/account/navigation.phtml">
+                <action method="addLink" translate="label" module="customer">
+                    <name>account</name>
+                    <path>customer/account/</path>
+                    <label>Account Dashboard</label>
+                </action>
+                <action method="addLink" translate="label" module="customer">
+                    <name>account_edit</name>
+                    <path>customer/account/edit/</path>
+                    <label>Account Information</label>
+                </action>
+                <action method="addLink" translate="label" module="customer">
+                    <name>account_address</name>
+                    <path>customer/address/</path>
+                    <label>Address Book</label>
+                </action>
+                <action method="addLink" translate="label" module="customer">
+                    <name>account_orders</name>
+                    <path>sales/order/history/</path>
+                    <label>My Orders</label>
+                </action>
+                <action method="addLink" translate="label" module="customer">
+                    <name>account_reviews</name>
+                    <path>review/customer/</path>
+                    <label>My Product Reviews</label>
+                </action>
+                <action method="addLink" translate="label" module="customer">
+                    <name>account_wishlist</name>
+                    <path>wishlist/</path>
+                    <label>My Wishlist</label>
+                </action>
+                <action method="addLink" translate="label" module="customer">
+                    <name>account_newsletter</name>
+                    <path>newsletter/manage/</path>
+                    <label>Newsletter Subscriptions</label>
+                </action>
+                <action method="addLink" translate="label" module="tag"><name>tags</name><path>tag/customer/</path><label>My Tags</label></action>
+            </block>
+        </reference>
+    </customer_account>    
+
+</layout>
