@@ -1,3 +1,0 @@
-===== 1.2.0 =====
-
-* Changed namespace from Auctionmaid to Webshopapps
