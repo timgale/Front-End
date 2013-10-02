@@ -148,8 +148,7 @@ if ($homepage && $homepage_url !== '/') {
 				<div class="row">
 					<div class="text-center span12">
 						<?php if ($options['tagline']) { ?>
-							<h2>Clicksco Front End Guidelines</h2>
-							<p class="lead">The purpose of these documents is to provide guidelines for writing Front End code across the Organisation. Code conventions are important for the long-term maintainability. The goal is to have all code in any code-base within the organisation look like a single person typed it, even when many people are contributing to it.</p>
+							<h2>Clicksco Front End Workflow</h2>
 						<?php } ?>
 					</div>
 				</div>
@@ -179,8 +178,8 @@ if ($homepage && $homepage_url !== '/') {
 					<div class="span5 offset1">
 						<ul class="footer-nav">
 							<li><a href="" target="_blank">View Github Repo</a></li>
+							<li><a href="" target="_blank">View Front End Standards Documentation</a></li>
 							<li><a href="" target="_blank">View Front End Testing Strategy Documentation</a></li>
-							<li><a href="" target="_blank">View Front End Workflow Documentation</a></li>
 							<li><a href="" target="_blank">Download Boilerplate</a></li>
 						</ul>
 					</div>
